@@ -104,7 +104,8 @@
                 <img src="img/jbcolimafront.png" alt="jbcolimafront image">
             </div>
             <div>
-                <ol>
+                <button id="edit-about-btn" class="btn" style="margin-bottom:10px;">Edit</button>
+                <ol id="about-content">
                     <li>
                         <h1>I'm a <span class="blue-span">Developer</span> also a <span
                                 class="blue-span">Cybersecurity Enthusiast</span></h1>
@@ -248,6 +249,23 @@
             document.body.classList.toggle('dark-mode');
             // Change icon
             this.textContent = document.body.classList.contains('dark-mode') ? '🌙' : '☀️';
+        };
+
+        const editBtn = document.getElementById('edit-about-btn');
+        const aboutContent = document.getElementById('about-content');
+        let editing = false;
+
+        editBtn.onclick = function () {
+            editing = !editing;
+            if (editing) {
+                aboutContent.setAttribute('contenteditable', 'true');
+                aboutContent.style.border = '2px dashed var(--primary-theme-color)';
+                editBtn.textContent = 'Save';
+            } else {
+                aboutContent.removeAttribute('contenteditable');
+                aboutContent.style.border = 'none';
+                editBtn.textContent = 'Edit';
+            }
         };
     </script>
 </body>
